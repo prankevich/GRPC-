@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package crud;
+option go_package = "awesomeProject/pb-server";
+
+
+message GetEmployeeByIDRequest {
+    int32 id = 1;
+}
+
+message GetAllEmployeesRequest {}
+
+message CreateEmployeeRequest {
+    string name = 1;
+    string email = 2;
+    int32 age = 3;
+}
+
+message UpdateEmployeeRequest {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+    int32 age = 4;
+}
+
+message DeleteEmployeeRequest {
+    int32 id = 1;
+}
+
+
+message Employee {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+    int32 age = 4;
+}
+
+message EmployeeResponse {
+    Employee employee = 1;
+}
+
+message EmployeesListResponse {
+    repeated Employee employees = 1;
+}
+
+
+service EmployeeService {
+    rpc GetEmployeeByID (GetEmployeeByIDRequest) returns (EmployeeResponse);
+    rpc GetAllEmployees (GetAllEmployeesRequest) returns (EmployeesListResponse);
+    rpc CreateEmployee (CreateEmployeeRequest) returns (EmployeeResponse);
+    rpc UpdateEmployee (UpdateEmployeeRequest) returns (EmployeeResponse);
+    rpc DeleteEmployee (DeleteEmployeeRequest) returns (EmployeeResponse);
+}
