@@ -8,7 +8,7 @@ message GetEmployeeByIDRequest {
     int32 id = 1;
 }
 
-message GetAllEmployeesRequest {}
+
 
 message CreateEmployeeRequest {
     string name = 1;
@@ -46,7 +46,6 @@ message EmployeesListResponse {
 
 service EmployeeService {
     rpc GetEmployeeByID (GetEmployeeByIDRequest) returns (EmployeeResponse);
-    rpc GetAllEmployees (GetAllEmployeesRequest) returns (EmployeesListResponse);
     rpc CreateEmployee (CreateEmployeeRequest) returns (EmployeeResponse);
     rpc UpdateEmployee (UpdateEmployeeRequest) returns (EmployeeResponse);
     rpc DeleteEmployee (DeleteEmployeeRequest) returns (EmployeeResponse);
